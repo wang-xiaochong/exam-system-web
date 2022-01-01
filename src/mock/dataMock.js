@@ -17,7 +17,8 @@ let loginResult = {
   data: {
     total: 1,
     'token|1': [{ 'money|500-1000': 700 }],
-    'info|1' : ['student','teacher'],
+    'info|1': ['student', 'teacher'],
+    'result':true,
     // total: 1,
     // 'min|1': [{'money|500-1000':700}] ,
     // 'middle|4': [{ 'money|1000-3000': 3000 }],
@@ -26,10 +27,7 @@ let loginResult = {
     // name: '@cname',
     // 'age|20-30': 23,
     // 'job|1': ['前端工程师', '后端工程师', 'UI工程师', '需求工程师']
-     'result':true,
   },
-  // status: 200,
- 
 }
 let moneyList = {
   data: {
@@ -39,6 +37,17 @@ let moneyList = {
     'max|1': [{'money|300-500':300}]
   }
 }
+
+let subjectList = {
+  data: {
+    total: 5,
+    'subject|2': [{ 'value|1': ['English','Chinese','Math','Science','Computer','Social'] ,'label':'choose'}],
+    // 'subjects':['English','Chinese','Math','Science','Computer','Social']
+  }
+
+}
+
+
 
 
 
@@ -56,6 +65,8 @@ export default {
 
 
   'post|/login': loginResult,
-  'get|/moneyMock': moneyList
+  'get|/moneyMock': moneyList,
+  'get|/student/getSubjects':subjectList,
+
 
 }

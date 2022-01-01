@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 // 使用自定义配置新建一个 axios 实例
 const service= axios.create({
    // 基础的请求地址
-    baseURL: 'http://localhost:8080/',
+    baseURL: '',
    // 设置超时时间 5s
     timeout: 5000
 });

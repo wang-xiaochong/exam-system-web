@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Student from '@/components/Student'
-import Teacher from '@/components/Teacher'
+import Student from '@/views/student/index'
+import Teacher from '@/views/teacher/index'
 import Login from '@/views/login/index'
 
 Vue.use(Router)

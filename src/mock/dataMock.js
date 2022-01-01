@@ -16,7 +16,7 @@ let demoList = [{
 let loginResult = {
   data: {
     total: 1,
-    'token|1': [{ 'money|500-1000': 700 }],
+    'token|1': "TOKEN information",
     'info|1': ['student', 'teacher'],
     'result':true,
     // total: 1,
@@ -40,11 +40,17 @@ let moneyList = {
 
 let subjectList = {
   data: {
-    total: 5,
+    // total: 5,
     'subject|2': [{ 'value|1': ['English','Chinese','Math','Science','Computer','Social'] ,'label':'choose'}],
     // 'subjects':['English','Chinese','Math','Science','Computer','Social']
   }
 
+}
+
+let questionList = {
+  data: {
+    'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
+  }
 }
 
 
@@ -66,7 +72,10 @@ export default {
 
   'post|/login': loginResult,
   'get|/moneyMock': moneyList,
-  'get|/student/getSubjects':subjectList,
+
+  'get|/student/getSubjects': subjectList,
+  'post|/student/getQuestions' : questionList,
+  
 
 
 }

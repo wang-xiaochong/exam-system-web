@@ -67,6 +67,7 @@ import { getSubjects } from "@/api/student/frontExam";
         },
         sendChoice() {
             console.log(this.value)
+           this.$router.push({path: '/exam'})
         }
     }
   }

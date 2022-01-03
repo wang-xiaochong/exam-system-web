@@ -19,3 +19,11 @@ export const getLogin = (payload) => {
         data: payload
     })
 }
+export const findUserByToken = (payload) => {
+    return request({
+        url: '/userInfo',
+        method: 'post',
+        data: payload
+    })
+}
+

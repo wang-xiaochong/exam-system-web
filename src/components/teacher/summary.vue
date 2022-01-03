@@ -3,7 +3,6 @@
  <el-table
     :data="tableData"
     border
-    show-summary
     style="width: 100%">
     <el-table-column
       prop="id"
@@ -15,21 +14,23 @@
       label="姓名">
     </el-table-column>
     <el-table-column
-      prop="amount1"
+      prop="Chinese"
       sortable
-      label="数值 1">
+      label="Chinese">
     </el-table-column>
     <el-table-column
-      prop="amount2"
+      prop="Math"
       sortable
-      label="数值 2">
+      label="Math">
     </el-table-column>
     <el-table-column
-      prop="amount3"
+      prop="English"
       sortable
-      label="数值 3">
+      label="English">
     </el-table-column>
   </el-table>
+
+  <el-button @click="getStudentGrade">grade</el-button>
 
 
 </div>
@@ -37,44 +38,23 @@
 </template>
 
 <script>
+import { getStudentGrade } from "@/api/teacher/exam";
   export default {
     data() {
       return {
-        tableData: [{
-          id: '12987122',
-          name: '王小虎',
-          amount1: '234',
-          amount2: '3.2',
-          amount3: 10
-        }, {
-          id: '12987123',
-          name: '王小虎',
-          amount1: '165',
-          amount2: '4.43',
-          amount3: 12
-        }, {
-          id: '12987124',
-          name: '王小虎',
-          amount1: '324',
-          amount2: '1.9',
-          amount3: 9
-        }, {
-          id: '12987125',
-          name: '王小虎',
-          amount1: '621',
-          amount2: '2.2',
-          amount3: 17
-        }, {
-          id: '12987126',
-          name: '王小虎',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }]
+       tableData:[]
       };
     },
     methods: {
         getStudentGrade(){
+          getStudentGrade().then(res => {
+            console.log(res)
+            this.tableData = res.data.info
+          })
+          .catch(res => {
+            console.log(res)
+          })
+
 
         },
       

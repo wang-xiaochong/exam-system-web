@@ -8,3 +8,19 @@ export const getSupervise = (payload) => {
         // data: payload
     })
 }
+
+export const getStudentGrade = (payload) => {
+    return request({
+        url: '/teacher/getGrade',
+        method: 'post',
+        // data: payload
+    })
+}
+
+export const getStudentAnswer = (payload) => {
+    return request({
+        url: '/teacher/getAnswer',
+        method: 'post',
+        // data: payload
+    })
+}

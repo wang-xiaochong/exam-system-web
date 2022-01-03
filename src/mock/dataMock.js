@@ -47,6 +47,12 @@ let subjectList = {
 
 }
 
+let userList = {
+  data: {
+     'id|190110001-200399111': 190110001,name: '@cname','info|1':['student','teacher'],
+  }
+}
+
 let questionList = {
   data: {
     'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
@@ -63,13 +69,23 @@ let superviseList = {
   }
 }
 
+let gradeList = {
+  data: {
+    
+    'info|6': [{ 'id|190110001-200399111': 190110001,name: '@cname','Math|60-100':70,'Chinese|60-100':70,'English|60-100':70}],
+    
+    // 'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
+  }
+}
 
-
-
-
-
-
-
+let answerList = {
+  data: {
+    
+    'info|6': [{ 'id|190110001-200399111': 190110001, name: '@cname', 'answer|6': [{'serialNumber|+1':6,'answer|1': 'answer describtion','question|1': 'question describtion'}]}],
+    
+    // 'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
+  }
+}
 
 export default {
   'get|/api': option => {
@@ -83,11 +99,15 @@ export default {
 
   'post|/login': loginResult,
   'get|/moneyMock': moneyList,
+  'post|/userInfo': userList,
 
   'get|/student/getSubjects': subjectList,
   'get|/teacher/getSubjects': subjectList,
   'post|/student/getQuestions': questionList,
-  'post|/teacher/supervise' : superviseList,
+  'post|/teacher/supervise': superviseList,
+  'post|/teacher/getGrade': gradeList,
+  'post|/teacher/getAnswer': answerList,
+
   
 
 

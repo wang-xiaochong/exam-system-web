@@ -7,6 +7,7 @@ import SExam from '@/views/student/exam'
 import TExam from '@/views/teacher/exam'
 
 import Summary from '@/views/teacher/summary'
+import Scoring from '@/views/teacher/scoring'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/teacher/summary',
       name: 'Summary',
       component: Summary,
+    },
+    {
+      path: '/teacher/scoring',
+      name: 'Scoring',
+      component: Scoring,
     },
 
 

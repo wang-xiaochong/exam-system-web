@@ -14,10 +14,6 @@
       <br><br>
       </li>
     </ol>
-
-
-
-    <el-button @click="print"></el-button>
   </div>
 </template>
 
@@ -52,7 +48,7 @@ export default {
         });
     },
 
-    
+
 
 
 

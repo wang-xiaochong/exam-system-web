@@ -1,12 +1,10 @@
 
 import request from '@/utils/request';
 
-export const getQuestions = (payload) => {
+export const getSupervise = (payload) => {
     return request({
-        url: '/student/getQuestions',
+        url: '/teacher/supervise',
         method: 'post',
         // data: payload
     })
 }
-
-

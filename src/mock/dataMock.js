@@ -54,6 +54,17 @@ let questionList = {
 }
 
 
+let superviseList = {
+  data: {
+    
+    'info|6': [{ 'id|190110001-200399111': 190110001,name: '@cname','left-time':'@DATETIME("yyyy-MM-dd HH:mm:ss")','status|1': ["Not entered","Entered","Finished"]}],
+    
+    // 'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
+  }
+}
+
+
+
 
 
 
@@ -74,7 +85,9 @@ export default {
   'get|/moneyMock': moneyList,
 
   'get|/student/getSubjects': subjectList,
-  'post|/student/getQuestions' : questionList,
+  'get|/teacher/getSubjects': subjectList,
+  'post|/student/getQuestions': questionList,
+  'post|/teacher/supervise' : superviseList,
   
 
 

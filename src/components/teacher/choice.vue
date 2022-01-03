@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { getSubjects } from "@/api/student/frontExam";
+import { getSubjects } from "@/api/teacher/frontExam";
 
 export default {
   data() {
@@ -46,7 +46,7 @@ export default {
     },
     sendChoice() {
       console.log(this.value);
-      this.$router.push({ path: "/student/exam" });
+      this.$router.push({ path: "/teacher/exam" });
     },
   },
 };

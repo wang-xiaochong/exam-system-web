@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <div id="subject-choice">
-        <choice></choice>
-    </div> -->
 
     <div class="header">
       <Header></Header>
@@ -16,8 +13,8 @@
       <div class="home" v-show="this.choice == 0">
         <home></home>
       </div>
-      <div class="exam" v-show="this.choice == 1">
-        <exam></exam>
+      <div class="exam"  v-show="this.choice == 1">
+        <exam :superviseData="this.superviseData"></exam>
       </div>
       <div class="scoring" v-show="this.choice == 2">
         <scoring></scoring>
@@ -28,9 +25,83 @@
       <div class="info" v-show="this.choice == 4">
         <info></info>
       </div>
+       <div class="choice" v-show="this.choice == 5">
+        <Choice @getSuperviseData="getSuperviseData" :subjectDetail="this.tempChoice"
+        
+        ></Choice>
+      </div>
+
+      <!-- <el-button @click="getSuperviseData">123</el-button> -->
+
+
     </div>
   </div>
 </template>
+
+
+
+
+<script>
+import Choice from "@/components/teacher/choice";
+import Aside from "@/components/layout/home/aside.vue";
+import Header from "@/components/layout/home/header.vue";
+import scoring from "./scoring.vue";
+import home from "./home.vue";
+import exam from "./exam.vue";
+import info from "./info.vue";
+import Summary from "./summary.vue";
+
+
+
+export default {
+  components: {
+    Header,
+    Aside,
+    Choice,
+    scoring,
+    home,
+    exam,
+    info,
+    Summary,
+  },
+  data() {
+    return {
+      choice: 0,
+      tempChoice:0,
+      superviseData:[],
+    };
+  },
+  methods: {
+    getIndex(index) {
+        if (index>0 && index<4) {
+            this.tempChoice = index
+            this.choice = 5
+
+        } else{
+            this.choice = index;
+        }
+    },
+
+    getSuperviseData(payload) {
+        console.log(payload)
+        this.choice = 1
+        this.superviseData = payload
+
+
+
+    },
+
+
+  },
+};
+</script>
+
+
+
+
+
+
+
 
 
 <style scoped>
@@ -75,38 +146,3 @@
   background-size: 100% 100%;
 } */
 </style>
-
-
-<script>
-import choice from "@/components/teacher/choice";
-import Aside from "@/components/layout/home/aside.vue";
-import Header from "@/components/layout/home/header.vue";
-import scoring from "./scoring.vue";
-import home from "./home.vue";
-import exam from "./exam.vue";
-import info from "./info.vue";
-import Summary from "./summary.vue";
-
-export default {
-  components: {
-    Header,
-    Aside,
-    choice,
-    scoring,
-    home,
-    exam,
-    info,
-    Summary,
-  },
-  data() {
-    return {
-      choice: 0,
-    };
-  },
-  methods: {
-    getIndex(index) {
-      this.choice = index;
-    },
-  },
-};
-</script>

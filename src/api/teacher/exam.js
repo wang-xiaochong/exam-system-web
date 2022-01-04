@@ -24,3 +24,12 @@ export const getStudentAnswer = (payload) => {
         // data: payload
     })
 }
+
+
+export const getSuperviseData = (payload) => {
+    return request({
+        url: '/teacher/supervise',
+        method: 'post',
+        // data: payload
+    })
+}

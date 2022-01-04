@@ -60,20 +60,29 @@
 
     </el-table>
 
-    <div>
+    <!-- <div>
       <el-button @click="getSupervise">test</el-button>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { getSupervise } from "@/api/teacher/exam";
+// import { getSupervise } from "@/api/teacher/exam";
 export default {
+    props: ["superviseData"],
   data() {
     return {
       tableData: [],
     };
   },
+  watch:{
+    superviseData(val){
+      this.tableData = val
+    }
+  },
+  // created:function(){
+  //   getSupervise()
+  // },
   methods: {
     resetDateFilter() {
       this.$refs.filterTable.clearFilter("id");
@@ -97,16 +106,21 @@ export default {
       handleDelete(index, row) {
         console.log(index, row);
       },
-    getSupervise() {
-      getSupervise()
-        .then((res) => {
-          this.tableData = res.data.info;
-          console.log(res);
-        })
-        .catch((res) => {
-          console.log(res);
-        });
-    },
+      
+    // getSupervise() {
+    //   // console.log("父组件",this.superviseData)
+    //   this.tableData = this.superviseData
+
+    //   // getSupervise()
+    //   //   .then((res) => {
+    //   //     this.tableData = res.data.info;
+    //   //     console.log(res);
+    //   //   })
+    //   //   .catch((res) => {
+    //   //     console.log(res);
+    //   //   });
+
+    // },
   },
 };
 </script>

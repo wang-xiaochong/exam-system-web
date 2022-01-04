@@ -74,7 +74,15 @@ export default new Router({
     {
       path: '/teacher',
       name: 'Teacher',
-      component: Teacher
+      component: Teacher,
+      children: [
+        {
+          path: '/scoring',
+          name: 'Teacher',
+          component: Node,
+
+        }
+      ]
     },
     {
       path: '/teacher/exam',
@@ -86,11 +94,11 @@ export default new Router({
       name: 'Summary',
       component: Summary,
     },
-    {
-      path: '/teacher/scoring',
-      name: 'Scoring',
-      component: Scoring,
-    },
+    // {
+    //   path: '/teacher/scoring',
+    //   name: 'Scoring',
+    //   component: Scoring,
+    // },
     {
       path: '/node',
       name: 'Node',

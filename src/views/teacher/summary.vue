@@ -1,6 +1,6 @@
 <template>
 <div>
-    summary
+    <!-- summary -->
     <div id="achievement-summary">
         <mysummary></mysummary>
         

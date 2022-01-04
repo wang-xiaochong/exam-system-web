@@ -1,6 +1,7 @@
 <template>
-  <div>
 
+  <div>
+    
     <div class="header">
       <Header></Header>
     </div>
@@ -10,14 +11,16 @@
     </div>
 
     <div class="main" :style="{ left: '200px' }">
+      
+
       <div class="home" v-show="this.choice == 0">
         <home></home>
       </div>
-      <div class="exam"  v-show="this.choice == 1">
+      <div class="exam" v-show="this.choice == 1">
         <exam :superviseData="this.superviseData"></exam>
       </div>
       <div class="scoring" v-show="this.choice == 2">
-        <scoring></scoring>
+        <scoring :studentList="this.studentList"></scoring>
       </div>
       <div class="summary" v-show="this.choice == 3">
         <Summary></Summary>
@@ -25,15 +28,18 @@
       <div class="info" v-show="this.choice == 4">
         <info></info>
       </div>
-       <div class="choice" v-show="this.choice == 5">
-        <Choice @getSuperviseData="getSuperviseData" :subjectDetail="this.tempChoice"
-        
+      <div class="choice" v-show="this.choice == 5">
+        <Choice
+          @getSuperviseData="getSuperviseData"
+          @getStudentList="getStudentList"
+          :subjectDetail="this.tempChoice"
         ></Choice>
+      </div>
+      <div class="list" v-show="this.choice == 6">
+        <SList :studentList="this.studentList"></SList>
       </div>
 
       <!-- <el-button @click="getSuperviseData">123</el-button> -->
-
-
     </div>
   </div>
 </template>
@@ -50,8 +56,7 @@ import home from "./home.vue";
 import exam from "./exam.vue";
 import info from "./info.vue";
 import Summary from "./summary.vue";
-
-
+import SList from "./studentList.vue";
 
 export default {
   components: {
@@ -63,35 +68,34 @@ export default {
     exam,
     info,
     Summary,
+    SList,
   },
   data() {
     return {
       choice: 0,
-      tempChoice:0,
-      superviseData:[],
+      tempChoice: 0,
+      superviseData: [],
+      studentList: [],
     };
   },
   methods: {
     getIndex(index) {
-        if (index>0 && index<4) {
-            this.tempChoice = index
-            this.choice = 5
-
-        } else{
-            this.choice = index;
-        }
+      if (index > 0 && index < 3) {
+        this.tempChoice = index;
+        this.choice = 5;
+      } else {
+        this.choice = index;
+      }
     },
 
     getSuperviseData(payload) {
-        console.log(payload)
-        this.choice = 1
-        this.superviseData = payload
-
-
-
+      this.choice = 1;
+      this.superviseData = payload;
     },
-
-
+    getStudentList(payload) {
+      this.choice = 6;
+      this.studentList = payload;
+    },
   },
 };
 </script>

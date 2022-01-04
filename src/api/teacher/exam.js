@@ -33,3 +33,13 @@ export const getSuperviseData = (payload) => {
         // data: payload
     })
 }
+
+export const getStudentList = (payload) => {
+    return request({
+        url: '/teacher/studentlist',
+        method: 'post',
+        // data: payload
+    })
+}
+
+

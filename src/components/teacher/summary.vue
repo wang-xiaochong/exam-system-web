@@ -28,9 +28,14 @@
       sortable
       label="English">
     </el-table-column>
+      <el-table-column
+      prop="Average"
+      sortable
+      label="Average">
+    </el-table-column>
   </el-table>
 
-  <el-button @click="getStudentGrade">grade</el-button>
+  <!-- <el-button @click="getStudentGrade">grade</el-button> -->
 
 
 </div>
@@ -45,11 +50,19 @@ import { getStudentGrade } from "@/api/teacher/exam";
        tableData:[]
       };
     },
+    created:function(){
+      this.getStudentGrade()
+    },
     methods: {
         getStudentGrade(){
           getStudentGrade().then(res => {
             console.log(res)
             this.tableData = res.data.info
+            console.log(res.data.info)
+            for (let index = 0; index < this.tableData.length; index++) {
+              this.$set(this.tableData[index],"Average",((this.tableData[index].Chinese+this.tableData[index].Math+this.tableData[index].English)/3.0).toFixed(2))
+            }
+
           })
           .catch(res => {
             console.log(res)

@@ -1,23 +1,38 @@
 <template>
-<div>
+  <div>
+
     <div id="grade-scoring">
-        <scoring></scoring>
+        <Scoring ></Scoring>
     </div>
 
+    <!-- <div id="choice">
+        <Choice></Choice>
 
-</div>
+    </div> -->
 
+
+
+
+
+  </div>
 </template>
 
 
 
 <script>
-import scoring from "@/components/teacher/scoring";
-
+import Scoring from "@/components/teacher/scoring";
+// import Choice from "@/components/teacher/choice";
 
 export default {
-    components:{
-        scoring:scoring
-    }
-}
+  props: ["studentList"],
+  components: {
+    Scoring: Scoring,
+    // Choice:Choice,
+    Scoring,
+  },
+  methods: {
+    
+
+  },
+};
 </script>

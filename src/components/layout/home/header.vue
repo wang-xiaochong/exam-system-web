@@ -47,6 +47,7 @@ export default {
   methods:{
      goToFront() {
       console.log("toFront");
+      this.$store.dispatch("updateToken", "");
       this.$router.push("/");
     },
   }

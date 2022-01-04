@@ -6,7 +6,7 @@
         <el-option
           v-for="item in subjects"
           :key="item.value"
-          :label="item.label"
+          :label="item.value"
           :value="item.value"
         >
           <span style="float: left">{{ item.label }}</span>
@@ -16,7 +16,7 @@
         </el-option>
       </el-select>
       <el-button @click="sendChoice" type="primary" round>确定</el-button>
-      {{ subjectDetail }}
+      <!-- {{ subjectDetail }} -->
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@
 <script>
 import { getSubjects } from "@/api/teacher/frontExam";
 import { getSuperviseData } from "@/api/teacher/exam";
+import { getStudentList } from "@/api/teacher/exam";
 
 
 export default {
@@ -50,7 +51,13 @@ export default {
     },
     sendChoice() {
       console.log(this.value);
-      switch (this.subjectDetail) {
+      if (this.value == "") {
+        this.$alert('请选择科目', '提示', {
+          confirmButtonText: '确定',
+        });
+      } else{
+
+        switch (this.subjectDetail) {
         case 1: {
           // 请求在线监督数据,携带参数 科目和监督
           getSuperviseData({subject:this.value,label:"Supervise"}).then(res=>{
@@ -64,17 +71,22 @@ export default {
           break;
         }
         case 2: {
-          console.log("22");
+           getStudentList({subject:this.value,label:"StudentList"}).then(res=>{
+             this.$emit("getStudentList", res.data.info);
+
+          })
+          .catch(res=>{})
+          // console.log("22");
           break;
         }
-        case 3: {
-          console.log("33");
-          break;
-        }
+        
         default : {
 
         }
       }
+
+      }
+      
 
       // this.$router.push({ path: "/teacher/exam" });
     },

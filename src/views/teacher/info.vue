@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- teacherInfo -->
     <el-descriptions class="margin-top" :column="3" border>
       <!-- <template slot="extra">
         <el-button type="primary" size="small">操作</el-button>
@@ -41,7 +40,11 @@
         {{ tableData.workplace }}
       </el-descriptions-item>
     </el-descriptions>
+
     <el-button type="primary" size="small" @click="edit">编辑</el-button>
+    <el-button type="primary" size="small" @click="updatePassword"
+      >修改密码</el-button
+    >
 
     <el-dialog title="更改" :visible.sync="dialogVisible" width="30%">
       <span
@@ -58,20 +61,32 @@
           </el-form-item>
           <el-form-item label="居住地">
             <el-input v-model="tableData.address"></el-input>
-          </el-form-item> 
+          </el-form-item>
           <el-form-item label="任课专业">
             <el-input v-model="tableData.major"></el-input>
-          </el-form-item> 
+          </el-form-item>
           <el-form-item label="办公地址">
             <el-input v-model="tableData.workplace"></el-input>
-          </el-form-item> 
-          </el-form
-      >
+          </el-form-item>
+        </el-form>
       </span>
-      
+
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="updateUser">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <el-dialog title="更改密码" :visible.sync="dialogVisibleP" width="30%">
+      <span>请输入旧密码:</span><br />
+      <el-input style="width: 100%"></el-input>
+      <span>请输入新密码:</span><br />
+      <el-input style="width: 100%"></el-input>
+      <span>请再次输入新密码:</span><br />
+      <el-input style="width: 100%"></el-input>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisibleP = false">取 消</el-button>
+        <el-button type="primary" @click="sendUpdate">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -82,7 +97,9 @@
 export default {
   data() {
     return {
+      labelPosition: "right",
       dialogVisible: false,
+      dialogVisibleP: false,
       tableData: {
         name: "王小帅",
         phone: 15030077897,
@@ -94,12 +111,17 @@ export default {
   },
   methods: {
     edit() {
-      console.log("==");
       this.dialogVisible = true;
     },
     updateUser() {
       this.dialogVisible = false;
       console.log("update");
+    },
+    updatePassword() {
+      this.dialogVisibleP = true;
+    },
+    sendUpdate() {
+      this.dialogVisibleP = false;
     },
   },
 };

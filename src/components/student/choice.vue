@@ -6,7 +6,7 @@
         <el-option
           v-for="item in subjects"
           :key="item.value"
-          :label="item.label"
+          :label="item.value"
           :value="item.value"
         >
           <span style="float: left">{{ item.label }}</span>
@@ -60,7 +60,7 @@ export default {
 
     enterStudentExam() {
       this.dialogVisible = false;
-      this.$router.push({ path: "/student/exam" });
+      this.$router.push({ path: "/student/"+this.value+"exam" });
     },
     sendChoice() {
       console.log(this.value);

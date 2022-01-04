@@ -43,6 +43,35 @@ export default new Router({
       component: SExam,
     },
     {
+      path: '/student/EnglishExam',
+      name: 'SExam',
+      component: SExam,
+    },
+    {
+      path: '/student/MathExam',
+      name: 'SExam',
+      component: SExam,
+    },
+    {
+      path: '/student/ChineseExam',
+      name: 'SExam',
+      component: SExam,
+    },
+    {
+      path: '/student/ComputerExam',
+      name: 'SExam',
+      component: SExam,
+    },
+
+
+
+
+
+
+
+
+
+    {
       path: '/teacher',
       name: 'Teacher',
       component: Teacher

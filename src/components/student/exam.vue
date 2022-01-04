@@ -1,6 +1,6 @@
 <template>
-  <div>
-    exam
+  <div id="examDetail">
+    <!-- exam -->
 
     <ol>
       <li v-for="item in this.questions" :key="item.id">
@@ -55,3 +55,17 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+#examDetail {
+  position: absolute;
+  display: inline-block;
+  left: 6%;
+  width: 90%;
+  top: 10%;
+  bottom: 10%;
+  /* filter:alpha(Opacity=100);-moz-opacity:1;opacity: 1; */
+  /* background: rgb(17, 17, 17); */
+}
+</style>

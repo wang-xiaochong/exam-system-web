@@ -81,11 +81,11 @@ export default {
               if (res.data.token != "") {
                 this.logining = false;
                 this.$store.dispatch("updateToken", res.data.token);
-                findUserByToken()
+                findUserByToken(this.$store.state.token)
                   .then((res) => {
                     switch (res.data.info) {
                       case "student":
-                        this.$router.push({ path: "/student" });
+                        this.$router.push({ path: "/node" });
                         break;
                       case "teacher":
                         this.$router.push({ path: "/teacher" });

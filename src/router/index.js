@@ -6,6 +6,9 @@ import Login from '@/views/login/index'
 import SExam from '@/views/student/exam'
 import TExam from '@/views/teacher/exam'
 
+import Node from '@/views/student/node'
+
+
 import Summary from '@/views/teacher/summary'
 import Scoring from '@/views/teacher/scoring'
 
@@ -58,6 +61,11 @@ export default new Router({
       path: '/teacher/scoring',
       name: 'Scoring',
       component: Scoring,
+    },
+    {
+      path: '/node',
+      name: 'Node',
+      component: Node,
     },
 
 

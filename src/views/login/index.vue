@@ -11,10 +11,10 @@
         class="demo-ruleForm login-page"
       >
         <h3 class="title">系统登录</h3>
-        <el-form-item prop="username">
+        <el-form-item prop="account">
           <el-input
             type="text"
-            v-model="form.username"
+            v-model="form.account"
             auto-complete="off"
             placeholder="用户名"
             clearable
@@ -54,11 +54,11 @@ export default {
     return {
       logining: false,
       form: {
-        username: "",
+        account: "",
         password: "",
       },
       rules: {
-        username: [
+        account: [
           { validator: isNumber, trigger: "blur" },
           { required: true, message: "账号不能为空", trigger: "blur" },
         ], // 使用 isSymbol 并 blur 方式 触发
@@ -77,21 +77,26 @@ export default {
           this.logining = true;
           getLogin(this.form)
             .then((res) => {
-              console.log(res);
-              if (res.data.token != "") {
+              if (res.code != 1000) {
+                this.$message(res.msg);
                 this.logining = false;
-                this.$store.dispatch("updateToken", res.data.token);
-                findUserByToken(this.$store.state.token)
+                return
+              }
+  
+              if (res.data != "") {
+                this.logining = false;
+                this.$store.dispatch("updateToken",res.data);
+                findUserByToken()
                   .then((res) => {
                     switch (res.data.info) {
-                      case "student":
+                      case "学生":
                         this.$router.push({ path: "/node" });
                         this.$message({
                           message: "登录成功",
                           type: "success",
                         });
                         break;
-                      case "teacher":
+                      case "教师":
                         this.$router.push({ path: "/teacher" });
                         this.$message({
                           message: "登录成功",
@@ -104,7 +109,7 @@ export default {
                     }
                   })
                   .catch((res) => {
-                    console.log(res);
+                    console.log("err",res);
                   });
               }
               // 成功之后的操作

@@ -11,7 +11,8 @@ const store = new Vuex.Store({
         name: 'helloVueX',
         //         token:sessionStorage.getItem(`token`)||``,
         //   userInfo:JSON.parse(sessionStorage.getItem(`userInfo`))||{},
-        token: JSON.parse(sessionStorage.getItem(`token`)) || [],
+        // token: JSON.parse(sessionStorage.getItem(`token`)) || "",
+        token: sessionStorage.getItem(`token`) || "",
         
     },
 
@@ -22,7 +23,8 @@ const store = new Vuex.Store({
             state.name = payload.name
         },
         setToken(state, token) {
-            sessionStorage.setItem(`token`, JSON.stringify(token))
+            // sessionStorage.setItem(`token`, JSON.stringify(token))
+            sessionStorage.setItem(`token`, token)
             state.token = token
         },
     },

@@ -14,14 +14,14 @@ import request from '@/utils/request';
 // 2.获取手机验证码
 export const getLogin = (payload) => {
     return request({
-        url: '/login',
+        url: '/user/login',
         method: 'post',
         data: payload
     })
 }
 export const findUserByToken = (payload) => {
     return request({
-        url: '/userInfo',
+        url: '/user/findUserByToken',
         method: 'post',
         data: payload
     })

@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 // 使用自定义配置新建一个 axios 实例
 const service= axios.create({
    // 基础的请求地址
-    baseURL: '',
+    baseURL: 'http://localhost:7001/',
    // 设置超时时间 5s
     timeout: 5000
 });
@@ -38,17 +38,17 @@ const service= axios.create({
 // 请求拦截器，例如请求的时候在头部加上请求的token
 service.interceptors.request.use(config => {
 
-   //  if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem(`token`)) {
 
-   //     config.headers.ACCESS_TOKEN = localStorage.getItem('token');
+        config.headers.Authorization = "Beaver " + sessionStorage.getItem(`token`);
 
-  //  }
+   }
 
     return config;  //  有且必须有一个config对象被返回
 
 }, error => {
    //   对请求错误做些什么
-    console.log(error);
+    console.log("request error:",error);
     return Promise.reject();
 });
 
@@ -64,24 +64,28 @@ service.interceptors.response.use(
     },
     // 服务器状态码不是200的情况,这些自定义（需要与后台商量返回）
     error => {
-        if (
-           400 <= error.response.status <500
-        ) {
-            alert("用户信息过期，请重新登陆");
-            // 清除token
-            // localStorage.removeItem("token");
-            // 跳转登录
-            setTimeout(() => {
-            //   window.location.href = "/login";
-            }, 1000);
-        } else {
-            if (error.response.status >= 500) {
-                alert("服务器开小差了，请稍后再试！");
-            } else {
-                alert("服务器开小差了，请稍后再试！");
-                return Promise.reject(error)
-            }
-        }
+
+        
+        // if (
+        //    400 <= error.response.status <500
+        // ) {
+        //     alert("用户信息过期，请重新登陆");
+        //     // 清除token
+        //     // localStorage.removeItem("token");
+        //     // 跳转登录
+        //     setTimeout(() => {
+        //     //   window.location.href = "/login";
+        //     }, 1000);
+        // } else {
+        //     if (error.response.status >= 500) {
+        //         alert("服务器开小差了，请稍后再试！");
+        //     } else {
+        //         alert("服务器开小差了，请稍后再试！");
+        //         return Promise.reject(error)
+        //     }
+        // }
+
+
     }
 );
 

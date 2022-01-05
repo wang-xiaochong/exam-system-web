@@ -86,9 +86,17 @@ export default {
                     switch (res.data.info) {
                       case "student":
                         this.$router.push({ path: "/node" });
+                        this.$message({
+                          message: "登录成功",
+                          type: "success",
+                        });
                         break;
                       case "teacher":
                         this.$router.push({ path: "/teacher" });
+                        this.$message({
+                          message: "登录成功",
+                          type: "success",
+                        });
                         break;
                       default: {
                         this.$router.push({ path: "/" });

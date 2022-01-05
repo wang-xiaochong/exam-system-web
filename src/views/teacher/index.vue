@@ -20,7 +20,7 @@
         <exam :superviseData="this.superviseData"></exam>
       </div>
       <div class="scoring" v-show="this.choice == 2">
-        <scoring :studentList="this.studentList"></scoring>
+        <scoring :studentInfo="this.studentInfo"></scoring>
       </div>
       <div class="summary" v-show="this.choice == 3">
         <Summary></Summary>
@@ -36,7 +36,7 @@
         ></Choice>
       </div>
       <div class="list" v-show="this.choice == 6">
-        <SList :studentList="this.studentList"></SList>
+        <SList  @getStudentInfo="getStudentInfo"  :studentList="this.studentList"></SList>
       </div>
 
       <!-- <el-button @click="getSuperviseData">123</el-button> -->
@@ -51,12 +51,13 @@
 import Choice from "@/components/teacher/choice";
 import Aside from "@/components/layout/home/aside.vue";
 import Header from "@/components/layout/home/header.vue";
+import SList from "@/components/teacher/SList.vue";
 import scoring from "./scoring.vue";
 import home from "./home.vue";
 import exam from "./exam.vue";
 import info from "./info.vue";
 import Summary from "./summary.vue";
-import SList from "./studentList.vue";
+
 
 export default {
   components: {
@@ -76,6 +77,7 @@ export default {
       tempChoice: 0,
       superviseData: [],
       studentList: [],
+      studentInfo:"",
     };
   },
   methods: {
@@ -96,6 +98,11 @@ export default {
       this.choice = 6;
       this.studentList = payload;
     },
+    getStudentInfo(payload){
+      this.choice = 2
+      this.studentInfo = payload
+
+    }
   },
 };
 </script>

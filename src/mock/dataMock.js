@@ -51,7 +51,7 @@ let subjectList = {
 
 let userList = {
   data: {
-    'id|190110001-200399111': 190110001, name: '@cname', 'info|1': ['student', 'teacher'],
+    'id|190110001-200399111': 190110001, name: '@cname', 'info|1': ['teacher'],
   }
 }
 
@@ -92,7 +92,7 @@ let studentList = {
 let answerList = {
   data: {
 
-    'info|6': [{ 'id|190110001-200399111': 190110001, name: '@cname', 'answer|6': [{ 'serialNumber|+1': 6, 'answer|1': 'answer describtion', 'question|1': 'question describtion' }] }],
+    'info|6': [{ 'id|190110001-200399111': 190110001, name: '@cname', 'answer|6': [{ 'serialNumber|+1': 6, 'answer|1': 'answer describtion', 'question|1': 'question describtion','grade|0':0 }] }],
 
     // 'question|5': [{ 'info': "1+1=?", 'answer': { 'A': 1,'B':2,'C':3,'D':4,},'id|+1':0}],
   }

@@ -4,9 +4,9 @@
 
     <div id="answer-details" style="width:100px display:inline-block">
       <ol>
-        <li v-for="item in this.answers" :key="item.serialNumber">
+        <li v-for="(item,index) in this.answers" :key="item.serialNumber">
           {{ item.question }}<br />{{ item.answer }} <br /><br />
-          <el-button @click="judgeGrade(item.serialNumber)">打分</el-button>
+          <el-button @click="judgeGrade(item.serialNumber)">打分</el-button> {{item.grade}}
 
           <div>
             <!-- <el-button type="text" @click="centerDialogVisible = true">点击打开 Dialog</el-button> -->
@@ -19,27 +19,27 @@
               <span>{{item.serialNumber}}</span>
               <span>{{ item.question }}</span
               ><br /><br />
-              <span>{{ item.answer }}</span
+              <span>{{ item.answer }}{{index}}</span
               ><br /><br />
-              <el-button size="mini">0</el-button
-              ><el-button size="mini">1</el-button
-              ><el-button size="mini">2</el-button
-              ><el-button size="mini">3</el-button
-              ><el-button size="mini">4</el-button
-              ><el-button size="mini">5</el-button
-              ><el-button size="mini">6</el-button
-              ><el-button size="mini">7</el-button
-              ><el-button size="mini">8</el-button
-              ><el-button size="mini">9</el-button
-              ><el-button size="mini">10</el-button
-              ><el-button size="mini">11</el-button
-              ><el-button size="mini">12</el-button>
+              <el-button size="mini" @click="changeGrade(0)">0</el-button
+              ><el-button size="mini" @click="changeGrade(1)">1</el-button
+              ><el-button size="mini" @click="changeGrade(2)">2</el-button
+              ><el-button size="mini" @click="changeGrade(3)">3</el-button
+              ><el-button size="mini" @click="changeGrade(4)">4</el-button
+              ><el-button size="mini" @click="changeGrade(5)">5</el-button
+              ><el-button size="mini" @click="changeGrade(6)">6</el-button
+              ><el-button size="mini" @click="changeGrade(7)">7</el-button
+              ><el-button size="mini" @click="changeGrade(8)">8</el-button
+              ><el-button size="mini" @click="changeGrade(9)">9</el-button
+              ><el-button size="mini" @click="changeGrade(10)">10</el-button
+              ><el-button size="mini" @click="changeGrade(11)">11</el-button
+              ><el-button size="mini" @click="changeGrade(12)">12</el-button>
 
               <span slot="footer" class="dialog-footer">
                 <el-button @click="centerDialogVisible = false"
                   >取 消</el-button
                 >
-                <el-button type="primary" @click="centerDialogVisible = false"
+                <el-button type="primary" @click="laterGrade(item,index)"
                   >确 定</el-button
                 >
               </span>
@@ -63,7 +63,13 @@ export default {
     return {
       answers: [],
       centerDialogVisible: false,
+      grade:"",
     };
+  },
+  watch:{
+    answers(val){
+      console.log(val)
+    }
   },
   created: function () {
     this.getStudentAnswer();
@@ -88,6 +94,14 @@ export default {
       this.centerDialogVisible = true;
       console.log(serialNumber);
     },
+    changeGrade(value){
+      this.grade = value
+    },
+    laterGrade(item,index){
+      this.answers[index].grade = this.grade
+      this.centerDialogVisible = false
+
+    }
   },
 };
 </script>

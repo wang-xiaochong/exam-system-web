@@ -98,7 +98,7 @@ export default {
     },
     handleEdit(index, row) {
       console.log(index, row);
-      this.$router.push({ path: "/teacher/scoring" });
+      this.$emit("getStudentInfo",row)
     },
     handleDelete(index, row) {
       console.log(index, row);
